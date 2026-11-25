@@ -187,6 +187,8 @@ namespace CryptoExchange.Net.Sockets.Default
                     SetProxy(socket, Parameters.Proxy);
 #if NET6_0_OR_GREATER
                 socket.Options.CollectHttpResponseDetails = true;
+                if (Parameters.UsePerMessageDeflate)
+                    socket.Options.DangerousDeflateOptions = new WebSocketDeflateOptions();
 #endif
 #if NET9_0_OR_GREATER
                 socket.Options.KeepAliveTimeout = Parameters.KeepAliveTimeout ?? TimeSpan.FromSeconds(10);

@@ -87,6 +87,13 @@ namespace CryptoExchange.Net.Objects.Sockets
         public int? ReceiveBufferSize { get; set; } = null;
 
         /// <summary>
+        /// Whether to offer the permessage-deflate extension (RFC 7692) in the connection handshake. When the server accepts it,
+        /// messages are compressed and decompressed transparently; when the server omits it, the connection stays uncompressed.
+        /// Only applied on .NET 6 and newer, ignored on other targets. Disabled by default.
+        /// </summary>
+        public bool UsePerMessageDeflate { get; set; }
+
+        /// <summary>
         /// ctor
         /// </summary>
         /// <param name="uri">Uri</param>
